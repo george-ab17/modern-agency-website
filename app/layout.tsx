@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { META } from '@/lib/constants/brand';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'PremiumAgency - Digital Excellence & AI-Powered Growth',
-  description:
-    'Transform your business with digital marketing, AI automation, software development, and strategic branding solutions.',
+  title: META.home.title,
+  description: META.home.description,
   keywords: [
     'Digital Marketing',
     'AI Automation',
@@ -15,9 +15,8 @@ export const metadata: Metadata = {
     'Business Strategy',
   ],
   openGraph: {
-    title: 'PremiumAgency - Premium Digital Solutions',
-    description:
-      'Transform your business with our comprehensive digital services.',
+    title: META.home.title,
+    description: META.home.description,
     type: 'website',
   },
 };
@@ -37,3 +36,4 @@ export default function RootLayout({
     </html>
   );
 }
+

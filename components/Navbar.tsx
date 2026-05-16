@@ -4,16 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
-import { THEME } from '@/lib/theme';
-
-const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-];
+import { NAV_LINKS, NAV_CTA } from '@/lib/constants/navigation';
+import { BRAND } from '@/lib/constants/brand';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,14 +21,14 @@ export const Navbar: React.FC = () => {
               className="flex items-center gap-2 font-bold text-xl text-brand-600 hover:text-brand-700 transition-smooth"
             >
               <div className="w-8 h-8 bg-gradient-to-br from-brand-600 to-brand-700 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-                {THEME.brand.logo}
+                KY
               </div>
-              <span className="hidden sm:inline">{THEME.brand.name}</span>
+              <span className="hidden sm:inline">{BRAND.name}</span>
             </Link>
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
+              {NAV_LINKS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -49,9 +41,9 @@ export const Navbar: React.FC = () => {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Link href="/contact">
+              <Link href={NAV_CTA.href}>
                 <Button size="sm">
-                  Get Started
+                  {NAV_CTA.label}
                 </Button>
               </Link>
             </div>
@@ -70,7 +62,7 @@ export const Navbar: React.FC = () => {
         {isOpen && (
           <div className="md:hidden border-t border-neutral-200 bg-white">
             <div className="px-4 py-4 space-y-3">
-              {navItems.map((item) => (
+              {NAV_LINKS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -80,9 +72,9 @@ export const Navbar: React.FC = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/contact" className="block">
+              <Link href={NAV_CTA.href} className="block">
                 <Button className="w-full" size="md">
-                  Get Started
+                  {NAV_CTA.label}
                 </Button>
               </Link>
             </div>
@@ -95,3 +87,4 @@ export const Navbar: React.FC = () => {
     </>
   );
 };
+
