@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { Button } from './Button';
 import { NAV_LINKS, NAV_CTA } from '@/lib/constants/navigation';
@@ -20,9 +21,14 @@ export const Navbar: React.FC = () => {
               href="/"
               className="flex items-center gap-2 font-bold text-xl text-brand-600 hover:text-brand-700 transition-smooth"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-brand-600 to-brand-700 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-                KY
-              </div>
+              <Image
+                src="/logo.png"
+                alt={`${BRAND.name} logo`}
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg object-cover"
+                priority
+              />
               <span className="hidden sm:inline">{BRAND.name}</span>
             </Link>
 

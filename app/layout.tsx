@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     description: META.home.description,
     type: 'website',
   },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({

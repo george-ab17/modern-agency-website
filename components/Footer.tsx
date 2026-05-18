@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Globe } from 'lucide-react';
 import { BRAND } from '@/lib/constants/brand';
 import { FOOTER } from '@/lib/constants/navigation';
@@ -11,9 +12,13 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-brand-600 to-brand-500 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-                KY
-              </div>
+              <Image
+                src="/logo.png"
+                alt={`${BRAND.name} logo`}
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg object-cover"
+              />
               <span className="font-bold text-white">{BRAND.name}</span>
             </div>
             <p className="text-sm text-neutral-400 mb-3">{FOOTER.tagline}</p>
