@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   Mail,
@@ -138,10 +139,11 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-neutral-900 mb-2">
                         Full Name *
                       </label>
                       <input
+                        id="name"
                         type="text"
                         name="name"
                         value={formData.name}
@@ -152,10 +154,11 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-neutral-900 mb-2">
                         Business Email *
                       </label>
                       <input
+                        id="email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -169,8 +172,9 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">Company Name</label>
+                      <label htmlFor="company" className="block text-sm font-medium text-neutral-900 mb-2">Company Name</label>
                       <input
+                        id="company"
                         type="text"
                         name="company"
                         value={formData.company}
@@ -180,8 +184,9 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">Phone Number</label>
+                      <label htmlFor="phone" className="block text-sm font-medium text-neutral-900 mb-2">Phone Number</label>
                       <input
+                        id="phone"
                         type="tel"
                         name="phone"
                         value={formData.phone}
@@ -194,39 +199,45 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">Country / Region</label>
+                      <label htmlFor="region" className="block text-sm font-medium text-neutral-900 mb-2">Country / Region</label>
                       <select
+                        id="region"
                         name="region"
                         value={formData.region}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-smooth bg-white"
                       >
+                        <option value="">Select region</option>
                         {['India', 'UK', 'UAE', 'Saudi Arabia', 'Qatar', 'Singapore', 'Malaysia', 'Other'].map((option) => (
                           <option key={option}>{option}</option>
                         ))}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">Service of Interest</label>
+                      <label htmlFor="service" className="block text-sm font-medium text-neutral-900 mb-2">Service of Interest</label>
                       <select
+                        id="service"
                         name="service"
                         value={formData.service}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-smooth bg-white"
                       >
+                        <option value="">Select service</option>
                         {['Digital Marketing', 'AI Automation', 'Software Development', 'Branding', 'Meta Ads', 'Google Ads', 'Conversion Optimisation', 'AI Lead Generation', 'Not Sure Yet'].map((option) => (
                           <option key={option}>{option}</option>
                         ))}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-neutral-900 mb-2">Monthly Budget</label>
+                      <label htmlFor="budget" className="block text-sm font-medium text-neutral-900 mb-2">Monthly Budget</label>
                       <select
+                        id="budget"
                         name="budget"
                         value={formData.budget}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-brand-600 transition-smooth bg-white"
                       >
+                        <option value="">Select budget</option>
                         {['Under Rs 50,000', 'Rs 50K-Rs 2L', 'Rs 2L-Rs 5L', 'Rs 5L+', 'Under GBP 1,000', 'GBP 1K-GBP 5K', 'GBP 5K+', 'Prefer not to say'].map((option) => (
                           <option key={option}>{option}</option>
                         ))}
@@ -235,10 +246,11 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-neutral-900 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-neutral-900 mb-2">
                       Message / Tell us about your goals
                     </label>
                     <textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
@@ -303,7 +315,10 @@ export default function Contact() {
             </div>
 
             {/* WhatsApp */}
-            <a href={BRAND.whatsapp ? `https://wa.me/${String(BRAND.whatsapp).replace(/\D/g, '')}` : '/contact'}>
+            <a
+              href={BRAND.whatsapp ? `https://wa.me/${String(BRAND.whatsapp).replace(/\D/g, '')}` : '/contact'}
+              aria-label="Chat with Kynosi on WhatsApp"
+            >
               <div className="bg-white rounded-xl border border-neutral-200 p-6 hover:border-brand-300 transition-smooth cursor-pointer">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -389,16 +404,20 @@ export default function Contact() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button size="lg" className="min-w-fit">
-              Schedule Your Call 
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="min-w-fit"
-            >
-              View Our Services
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" className="min-w-fit">
+                Schedule Your Call
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button
+                variant="outline"
+                size="lg"
+                className="min-w-fit"
+              >
+                View Our Services
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </SectionContainer>

@@ -58,15 +58,17 @@ export const Footer: React.FC = () => {
               <a
                 href={`mailto:${FOOTER.contact.email}`}
                 className="flex items-center gap-2 text-neutral-400 hover:text-white transition-smooth"
+                aria-label={`Email ${BRAND.name}`}
               >
-                <Mail size={16} />
+                <Mail size={16} aria-hidden="true" />
                 {FOOTER.contact.email}
               </a>
               <a
                 href={`https://${FOOTER.contact.website}`}
                 className="flex items-center gap-2 text-neutral-400 hover:text-white transition-smooth"
+                aria-label={`Visit ${BRAND.name} website`}
               >
-                <Globe size={16} />
+                <Globe size={16} aria-hidden="true" />
                 {FOOTER.contact.website}
               </a>
             </div>

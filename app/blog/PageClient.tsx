@@ -30,6 +30,9 @@ const itemVariants = {
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
+  const visiblePosts = [FEATURED_POST, ...BLOG_POSTS].filter(
+    (post) => selectedCategory === 'All' || post.category === selectedCategory
+  );
 
   return (
     <>
@@ -69,9 +72,11 @@ export default function Blog() {
         >
           {BLOG_CATEGORIES.map((category) => (
             <motion.button
+              type="button"
               key={category}
               variants={itemVariants}
               onClick={() => setSelectedCategory(category)}
+              aria-pressed={selectedCategory === category}
               className={`
                 px-4 py-2 rounded-full text-sm font-medium transition-smooth
                 ${
@@ -96,7 +101,7 @@ export default function Blog() {
           variants={containerVariants}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
-            {[FEATURED_POST, ...BLOG_POSTS].map((post, idx) => (
+            {visiblePosts.map((post, idx) => (
               <motion.div key={post.id || idx} variants={itemVariants}>
                 <BlogCard 
                   title={post.title}
@@ -168,6 +173,8 @@ export default function Blog() {
             description="Turn these insights into results. Let's work together to achieve your growth goals. Book a free strategy consultation with our experts today."
             primaryButtonText="Schedule Your Free Consultation "
             secondaryButtonText="View Our Services"
+            primaryHref="/contact"
+            secondaryHref="/services"
           />
         </motion.div>
       </SectionContainer>

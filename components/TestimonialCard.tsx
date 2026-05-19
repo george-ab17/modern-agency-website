@@ -34,6 +34,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
             key={i}
             size={16}
             className="fill-yellow-400 text-yellow-400"
+            aria-hidden="true"
           />
         ))}
       </div>

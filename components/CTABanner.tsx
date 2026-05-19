@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button } from './Button';
 import { ArrowRight } from 'lucide-react';
 
@@ -7,6 +8,8 @@ interface CTABannerProps {
   description: string;
   primaryButtonText?: string;
   secondaryButtonText?: string;
+  primaryHref?: string;
+  secondaryHref?: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
   variant?: 'dark' | 'light';
@@ -18,6 +21,8 @@ export const CTABanner: React.FC<CTABannerProps> = ({
   description,
   primaryButtonText = 'Get Started',
   secondaryButtonText = 'Learn More',
+  primaryHref,
+  secondaryHref,
   onPrimaryClick = () => {},
   onSecondaryClick = () => {},
   variant = 'dark',
@@ -59,16 +64,42 @@ export const CTABanner: React.FC<CTABannerProps> = ({
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
-            variant={isDark ? 'secondary' : 'primary'}
-            size="lg"
-            onClick={onPrimaryClick}
-            className="min-w-fit"
-          >
-            {primaryButtonText}
-            <ArrowRight size={18} />
-          </Button>
-          {secondaryButtonText && (
+          {primaryHref ? (
+            <Link href={primaryHref}>
+              <Button
+                variant={isDark ? 'secondary' : 'primary'}
+                size="lg"
+                className="min-w-fit"
+              >
+                {primaryButtonText}
+                <ArrowRight size={18} />
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant={isDark ? 'secondary' : 'primary'}
+              size="lg"
+              onClick={onPrimaryClick}
+              className="min-w-fit"
+            >
+              {primaryButtonText}
+              <ArrowRight size={18} />
+            </Button>
+          )}
+          {secondaryButtonText && secondaryHref ? (
+            <Link href={secondaryHref}>
+              <Button
+                variant={isDark ? 'outline' : 'ghost'}
+                size="lg"
+                className={`min-w-fit ${
+                  isDark ? 'border-blue-200 text-blue-100 hover:bg-white/10' : ''
+                }`}
+              >
+                {secondaryButtonText}
+              </Button>
+            </Link>
+          ) : null}
+          {secondaryButtonText && !secondaryHref ? (
             <Button
               variant={isDark ? 'outline' : 'ghost'}
               size="lg"
@@ -79,7 +110,7 @@ export const CTABanner: React.FC<CTABannerProps> = ({
             >
               {secondaryButtonText}
             </Button>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

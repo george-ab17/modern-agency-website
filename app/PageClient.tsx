@@ -6,6 +6,8 @@ import {
   Zap,
   TrendingUp,
   Target,
+  Search,
+  BarChart3,
   Code2,
   Palette,
   Brain,
@@ -32,6 +34,8 @@ const serviceIcons = {
   Target,
   Brain,
   Palette,
+  Search,
+  BarChart3,
 } as const;
 
 const containerVariants = {
@@ -402,6 +406,8 @@ export default function Home() {
             description="Join hundreds of ambitious companies across India, the UK, the Middle East, and Asia who are achieving exceptional growth with Kynosi's strategic solutions. Your next chapter starts here."
             primaryButtonText="Schedule Your Free Consultation "
             secondaryButtonText="Explore Our Services"
+            primaryHref="/contact"
+            secondaryHref="/services"
           />
         </motion.div>
       </SectionContainer>

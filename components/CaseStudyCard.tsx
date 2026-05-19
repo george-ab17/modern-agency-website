@@ -22,7 +22,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   className = '',
 }) => {
   return (
-    <Link href={href}>
+    <Link href={href} aria-label={`Read case study for ${company}`}>
       <div
         className={`
           p-6 lg:p-8
@@ -71,7 +71,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
               </span>
             ))}
           </div>
-          <ArrowRight size={20} className="text-brand-600" />
+          <ArrowRight size={20} className="text-brand-600" aria-hidden="true" />
         </div>
       </div>
     </Link>

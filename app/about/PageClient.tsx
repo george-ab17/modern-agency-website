@@ -71,7 +71,7 @@ export default function About() {
               Kynosi was built on one powerful belief: every business deserves world-class digital marketing. We are a bold, AI-first digital marketing and technology agency serving clients across India, the United Kingdom, the Middle East, and Asia. From Mumbai to Manchester, from Dubai to Singapore  Kynosi is where ambitious businesses come to scale.
             </p>
             <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
-              Founded over a decade ago, we've grown from a scrappy digital team into a 150+ strong powerhouse agency that has delivered 500+ successful projects across industries including e-commerce, fintech, healthcare, real estate, education, and SaaS. Our obsession is simple: measurable, transformative growth for every client we work with.
+              With 5+ years of experience, we've grown from a focused digital team into a 150+ strong powerhouse agency that has delivered 500+ successful projects across industries including e-commerce, fintech, healthcare, real estate, education, and SaaS. Our obsession is simple: measurable, transformative growth for every client we work with.
             </p>
             <p className="text-lg text-neutral-600 leading-relaxed">
               We don't believe in vanity metrics. We believe in revenue, leads, and results that matter. That's why 98% of our clients stay with us  because we deliver.
@@ -307,7 +307,7 @@ export default function About() {
                 description: 'Long-term partnerships built on trust and results',
               },
               {
-                number: '10+',
+                number: '5+',
                 label: 'Years of Experience',
                 description: 'Industry expertise and market insight across regions',
               },

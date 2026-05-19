@@ -28,7 +28,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     >
       <div className="mb-4">
         <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center group-hover:bg-brand-200 transition-smooth">
-          <Icon size={24} className="text-brand-600" />
+          <Icon size={24} className="text-brand-600" aria-hidden="true" />
         </div>
       </div>
       <h3 className="text-lg font-semibold text-neutral-900 mb-2">

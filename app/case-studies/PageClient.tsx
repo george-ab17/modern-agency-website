@@ -108,7 +108,7 @@ export default function CaseStudies() {
             {[
               { stat: '500+', label: 'Projects Delivered' },
               { stat: '98%', label: 'Client Satisfaction' },
-              { stat: '10+', label: 'Years Experience' },
+              { stat: '5+', label: 'Years Experience' },
               { stat: '150+', label: 'Team Members' },
             ].map((item, i) => (
               <motion.div
@@ -139,6 +139,8 @@ export default function CaseStudies() {
             description="Let's talk about what Kynosi can do for your business. Book a free strategy consultation  no pressure, no fluff, just an honest conversation about your goals and how we can help you smash them."
             primaryButtonText="Book Your Free Consultation "
             secondaryButtonText="View Our Services"
+            primaryHref="/contact"
+            secondaryHref="/services"
           />
         </motion.div>
       </SectionContainer>

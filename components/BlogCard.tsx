@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Clock, User } from 'lucide-react';
+import { ArrowRight, Clock, Newspaper, User } from 'lucide-react';
 
 interface BlogCardProps {
   title: string;
@@ -26,7 +26,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   className = '',
 }) => {
   return (
-    <Link href={href}>
+    <Link href={href} aria-label={`Read ${title}`}>
       <div
         className={`
           bg-white rounded-xl
@@ -42,15 +42,13 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           ${className}
         `}
       >
-        {/* Placeholder Image */}
         <div className="w-full h-48 md:h-64 bg-gradient-to-br from-brand-100 to-brand-200 flex items-center justify-center overflow-hidden relative">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-600/10 to-brand-700/20 group-hover:from-brand-600/20 group-hover:to-brand-700/30 transition-smooth" />
-          <div className="text-brand-300 text-center z-10">
-            <div className="text-6xl opacity-30">📰</div>
+          <div className="text-brand-300 text-center z-10" aria-hidden="true">
+            <Newspaper size={56} className="opacity-40" />
           </div>
         </div>
 
-        {/* Content */}
         <div className="p-6 flex flex-col flex-1">
           <div className="mb-3">
             <span className="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-xs font-medium rounded-full">
@@ -66,19 +64,22 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             {excerpt}
           </p>
 
-          {/* Meta */}
           <div className="flex items-center justify-between mt-auto pt-4 border-t border-neutral-200 text-xs text-neutral-500">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1">
-                <User size={14} />
+                <User size={14} aria-hidden="true" />
                 {author}
               </div>
               <div className="flex items-center gap-1">
-                <Clock size={14} />
+                <Clock size={14} aria-hidden="true" />
                 {readTime} min
               </div>
             </div>
-            <ArrowRight size={16} className="text-brand-600 opacity-0 group-hover:opacity-100 transition-smooth" />
+            <ArrowRight
+              size={16}
+              className="text-brand-600 opacity-0 group-hover:opacity-100 transition-smooth"
+              aria-hidden="true"
+            />
           </div>
 
           <p className="text-xs text-neutral-400 mt-2">{date}</p>

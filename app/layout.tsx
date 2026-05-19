@@ -1,24 +1,23 @@
 import type { Metadata } from 'next';
+import { JsonLd } from '@/components/JsonLd';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { META } from '@/lib/constants/brand';
+import { BRAND, META } from '@/lib/constants/brand';
+import { organizationSchema, websiteSchema } from '@/lib/schema';
+import { pageMetadata, SITE_URL } from '@/lib/seo';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: META.home.title,
-  description: META.home.description,
-  keywords: [
-    'Digital Marketing',
-    'AI Automation',
-    'Software Development',
-    'Branding',
-    'Business Strategy',
-  ],
-  openGraph: {
+  metadataBase: new URL(SITE_URL),
+  ...pageMetadata({
     title: META.home.title,
     description: META.home.description,
-    type: 'website',
-  },
+    path: '/',
+  }),
+  applicationName: BRAND.name,
+  authors: [{ name: BRAND.name, url: SITE_URL }],
+  creator: BRAND.name,
+  publisher: BRAND.name,
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',
@@ -33,8 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-neutral-900">
+        <JsonLd data={[organizationSchema, websiteSchema]} />
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

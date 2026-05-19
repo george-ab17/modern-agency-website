@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { SectionContainer } from '@/components/SectionContainer';
 import { CTABanner } from '@/components/CTABanner';
+import { SERVICES_FAQS } from '@/lib/data/faqs';
 import { SERVICES } from '@/lib/data/services';
 
 
@@ -85,12 +86,14 @@ export default function Services() {
               return (
                 <motion.div key={service.id} variants={itemVariants}>
                   <button
+                    type="button"
                     onClick={() =>
                       setSelectedService(
                         selectedService === service.id ? null : service.id
                       )
                     }
                     className="w-full text-left"
+                    aria-expanded={selectedService === service.id}
                   >
                     <div
                       className={`
@@ -116,6 +119,7 @@ export default function Services() {
                           {IconComponent && (
                             <IconComponent
                               size={24}
+                              aria-hidden="true"
                               className={
                                 selectedService === service.id
                                   ? 'text-white'
@@ -234,20 +238,7 @@ export default function Services() {
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {[
-              {
-                question: 'Do you work with businesses outside India?',
-                answer: 'Absolutely. Kynosi serves clients across India, the United Kingdom, the Middle East, and across Asia including Singapore, Malaysia, and beyond.',
-              },
-              {
-                question: 'Do you offer custom packages?',
-                answer: 'Yes. Every business is unique, and so is every Kynosi engagement. We create bespoke service packages tailored to your specific goals, budget, and market.',
-              },
-              {
-                question: 'How quickly can we see results?',
-                answer: 'It depends on the service. Paid ads campaigns typically show measurable results within 2-4 weeks. SEO and content marketing build momentum over 3-6 months. AI automation delivers efficiency gains from day one.',
-              },
-            ].map((faq, i) => (
+            {SERVICES_FAQS.map((faq, i) => (
               <motion.div key={i} variants={itemVariants}>
                 <div className="bg-white rounded-xl p-8 border border-neutral-200">
                   <h3 className="text-xl font-bold text-neutral-900 mb-4">
@@ -274,6 +265,8 @@ export default function Services() {
             description="Book a free 30-minute strategy consultation with our experts. We'll audit your current digital presence, identify your biggest growth opportunities, and recommend the exact services that will move the needle for your business  whether you're based in India, the UK, the Middle East, or anywhere across Asia."
             primaryButtonText="Book Your Free Strategy Call "
             secondaryButtonText="Explore Case Studies"
+            primaryHref="/contact"
+            secondaryHref="/case-studies"
           />
         </motion.div>
       </SectionContainer>

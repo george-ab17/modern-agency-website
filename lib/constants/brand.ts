@@ -12,7 +12,7 @@ export const BRAND = {
 export const STATS = [
   { value: "500+", label: "Projects Delivered" },
   { value: "98%", label: "Client Satisfaction" },
-  { value: "10+", label: "Years Experience" },
+  { value: "5+", label: "Years Experience" },
   { value: "150+", label: "Team Members" },
 ] as const;
 
@@ -25,7 +25,7 @@ export const META = {
   about: {
     title: "About Kynosi | AI-Powered Digital Marketing Agency - India, UK, Middle East & Asia",
     description:
-      "Kynosi is a bold, AI-powered digital marketing and growth agency with a decade of proven results. Meet the team, discover our mission, and find out why 500+ businesses trust us to deliver exceptional growth.",
+      "Kynosi is a bold, AI-powered digital marketing and growth agency with 5+ years of proven experience. Meet the team, discover our mission, and find out why 500+ businesses trust us to deliver exceptional growth.",
   },
   services: {
     title: "Digital Marketing & AI Services | Kynosi - Growth Solutions for India, UK & Middle East",

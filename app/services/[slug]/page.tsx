@@ -3,8 +3,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/Button';
+import { JsonLd } from '@/components/JsonLd';
 import { SectionContainer } from '@/components/SectionContainer';
 import { SERVICE_PAGES, type ServicePageSlug } from '@/lib/data/servicePages';
+import { SERVICES } from '@/lib/data/services';
+import { breadcrumbSchema, serviceSchema } from '@/lib/schema';
+import { pageMetadata } from '@/lib/seo';
 
 type ServicePageProps = {
   params: {
@@ -23,10 +27,13 @@ export function generateMetadata({ params }: ServicePageProps): Metadata {
     return {};
   }
 
-  return {
+  const path = `/services/${params.slug}`;
+
+  return pageMetadata({
     title: `${service.title} | Kynosi`,
     description: service.subtitle,
-  };
+    path,
+  });
 }
 
 export default function ServiceDetailPage({ params }: ServicePageProps) {
@@ -36,8 +43,26 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
     notFound();
   }
 
+  const serviceSummary = SERVICES.find((item) => item.href === `/services/${params.slug}`);
+  const path = `/services/${params.slug}`;
+  const relatedServices = SERVICES.filter((item) => item.href !== path).slice(0, 3);
+
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({
+            title: serviceSummary?.title ?? service.title,
+            description: serviceSummary?.description ?? service.subtitle,
+            path,
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/services' },
+            { name: serviceSummary?.title ?? service.title, path },
+          ]),
+        ]}
+      />
       <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-brand-50 to-white">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 mb-6">
@@ -96,6 +121,31 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
           </div>
         </SectionContainer>
       ) : null}
+
+      <SectionContainer padding="2xl" className="bg-neutral-50">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-3">
+            Related Services
+          </h2>
+          <p className="text-neutral-600 max-w-2xl mx-auto">
+            Build a stronger growth system by connecting this service with adjacent Kynosi capabilities.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedServices.map((relatedService) => (
+            <Link
+              key={relatedService.id}
+              href={relatedService.href}
+              className="rounded-xl border border-neutral-200 bg-white p-6 hover:border-brand-300 hover:shadow-md transition-smooth"
+            >
+              <h3 className="text-lg font-bold text-neutral-900 mb-2">
+                {relatedService.title}
+              </h3>
+              <p className="text-sm text-neutral-600">{relatedService.description}</p>
+            </Link>
+          ))}
+        </div>
+      </SectionContainer>
 
       <SectionContainer padding="2xl">
         <div className="bg-gradient-to-r from-brand-600 to-brand-700 rounded-2xl py-16 px-6 text-center">

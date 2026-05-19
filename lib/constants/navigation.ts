@@ -40,7 +40,7 @@ export const FOOTER = {
     website: "kynosi.com",
   },
   legal: {
-    copyright: " 2026 Kynosi. All rights reserved.",
+    copyright: "(c) 2026 Kynosi. All rights reserved.",
     links: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
