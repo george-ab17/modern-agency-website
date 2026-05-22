@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JsonLd } from '@/components/JsonLd';
+import { JsonLd } from '@/components';
 import { META } from '@/lib/constants/brand';
 import { servicesCollectionSchema, servicesFaqSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';

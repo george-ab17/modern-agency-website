@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { Button } from '@/components/Button';
-import { JsonLd } from '@/components/JsonLd';
-import { SectionContainer } from '@/components/SectionContainer';
+import { Button } from '@/components';
+import { JsonLd } from '@/components';
+import { SectionContainer } from '@/components';
 import { CASE_STUDIES } from '@/lib/data/caseStudies';
 import { SERVICES } from '@/lib/data/services';
 import { articleSchema, breadcrumbSchema } from '@/lib/schema';
@@ -182,7 +182,7 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
               <p className="text-neutral-600">See how Kynosi connects strategy, execution, and measurable results.</p>
             </div>
             <Link href="/case-studies">
-              <Button variant="outline">View All</Button>
+              <Button as="span" variant="outline">View All</Button>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -210,7 +210,7 @@ export default function CaseStudyDetailPage({ params }: CaseStudyPageProps) {
             Book a free consultation and we will identify the highest-impact opportunities for your business.
           </p>
           <Link href="/contact">
-            <Button variant="secondary" size="lg">
+            <Button as="span" variant="secondary" size="lg">
               Book Your Free Consultation
               <ArrowRight size={20} />
             </Button>

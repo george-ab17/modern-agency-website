@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/Button';
-import { SectionContainer } from '@/components/SectionContainer';
+import { Button } from '@/components';
+import { SectionContainer } from '@/components';
 
 export default function NotFound() {
   return (
@@ -16,13 +16,13 @@ export default function NotFound() {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link href="/">
-            <Button size="lg">
+            <Button as="span" size="lg">
               Go Home
               <ArrowRight size={20} />
             </Button>
           </Link>
           <Link href="/services">
-            <Button variant="outline" size="lg">
+            <Button as="span" variant="outline" size="lg">
               View Services
             </Button>
           </Link>

@@ -1,10 +1,10 @@
-// Main components export file
+export { BlogCard } from './BlogCard';
 export { Button } from './Button';
-export { SectionContainer } from './SectionContainer';
-export { Navbar } from './Navbar';
+export { CaseStudyCard } from './CaseStudyCard';
+export { CTABanner } from './CTABanner';
 export { Footer } from './Footer';
+export { JsonLd } from './JsonLd';
+export { Navbar } from './Navbar';
+export { SectionContainer } from './SectionContainer';
 export { ServiceCard } from './ServiceCard';
 export { TestimonialCard } from './TestimonialCard';
-export { CaseStudyCard } from './CaseStudyCard';
-export { BlogCard } from './BlogCard';
-export { CTABanner } from './CTABanner';

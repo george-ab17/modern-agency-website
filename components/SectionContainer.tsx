@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface SectionContainerProps {
+interface SectionContainerProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -19,9 +19,10 @@ export const SectionContainer: React.FC<SectionContainerProps> = ({
   children,
   className = '',
   padding = 'lg',
+  ...props
 }) => {
   return (
-    <section className={`${paddingMap[padding]} ${className}`}>
+    <section className={`${paddingMap[padding]} ${className}`} {...props}>
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   );

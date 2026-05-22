@@ -12,6 +12,24 @@ export const FEATURED_POST = {
 
 export const BLOG_POSTS = [
   {
+    id: "vibe-coding-replacing-dev-teams",
+    title: "Vibe Coding Is Replacing Dev Teams: Here's What That Means for Your Business",
+    category: "AI & Automation",
+    readTime: "9 min read",
+    date: "May 2026",
+    excerpt:
+      "AI coding tools are compressing the gap between idea and reality. Learn what vibe coding means for build costs, speed, hiring, risk, and business growth.",
+  },
+  {
+    id: "zero-click-searches-eating-your-traffic",
+    title: "Zero-Click Searches Are Eating Your Traffic - Here's How to Fight Back",
+    category: "SEO",
+    readTime: "7 min read",
+    date: "May 2026",
+    excerpt:
+      "Rankings are holding, but organic traffic is falling. Learn why zero-click searches are changing SEO and how to rebuild a resilient traffic strategy.",
+  },
+  {
     id: "google-ads-vs-meta-ads",
     title: "Google Ads vs Meta Ads: Which Is Right for Your Business?",
     category: "Ads Strategy",

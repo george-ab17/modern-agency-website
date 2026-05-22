@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/Button';
-import { JsonLd } from '@/components/JsonLd';
-import { SectionContainer } from '@/components/SectionContainer';
+import { Button } from '@/components';
+import { JsonLd } from '@/components';
+import { SectionContainer } from '@/components';
 import { SERVICE_PAGES, type ServicePageSlug } from '@/lib/data/servicePages';
 import { SERVICES } from '@/lib/data/services';
 import { breadcrumbSchema, serviceSchema } from '@/lib/schema';
@@ -156,7 +156,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             Book a free strategy consultation and discover how Kynosi can help you scale smarter.
           </p>
           <Link href="/contact">
-            <Button variant="secondary" size="lg">
+            <Button as="span" variant="secondary" size="lg">
               Book Your Free Consultation
               <ArrowRight size={20} />
             </Button>

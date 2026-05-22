@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionContainer } from '@/components/SectionContainer';
-import { CaseStudyCard } from '@/components/CaseStudyCard';
-import { CTABanner } from '@/components/CTABanner';
+import { SectionContainer } from '@/components';
+import { CaseStudyCard } from '@/components';
+import { CTABanner } from '@/components';
 import { CASE_STUDIES } from '@/lib/data/caseStudies';
 
 

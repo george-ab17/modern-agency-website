@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { JsonLd } from '@/components/JsonLd';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { JsonLd } from '@/components';
+import { Navbar } from '@/components';
+import { Footer } from '@/components';
 import { BRAND, META } from '@/lib/constants/brand';
 import { organizationSchema, websiteSchema } from '@/lib/schema';
 import { pageMetadata, SITE_URL } from '@/lib/seo';

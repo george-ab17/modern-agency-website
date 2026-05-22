@@ -15,12 +15,12 @@ import {
   CheckCircle2,
   Sparkles,
 } from 'lucide-react';
-import { Button } from '@/components/Button';
-import { SectionContainer } from '@/components/SectionContainer';
-import { ServiceCard } from '@/components/ServiceCard';
-import { TestimonialCard } from '@/components/TestimonialCard';
-import { CaseStudyCard } from '@/components/CaseStudyCard';
-import { CTABanner } from '@/components/CTABanner';
+import { Button } from '@/components';
+import { SectionContainer } from '@/components';
+import { ServiceCard } from '@/components';
+import { TestimonialCard } from '@/components';
+import { CaseStudyCard } from '@/components';
+import { CTABanner } from '@/components';
 import Link from 'next/link';
 import { STATS } from '@/lib/constants/brand';
 import { SERVICES } from '@/lib/data/services';
@@ -96,13 +96,13 @@ export default function Home() {
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Link href="/contact">
-                <Button size="lg">
+                <Button as="span" size="lg">
                   Start Your Journey 
                   <ArrowRight size={20} />
                 </Button>
               </Link>
               <Link href="/case-studies">
-                <Button variant="outline" size="lg">
+                <Button as="span" variant="outline" size="lg">
                   View Our Work
                 </Button>
               </Link>
@@ -307,7 +307,7 @@ export default function Home() {
             </motion.p>
             <motion.div variants={itemVariants}>
               <Link href="/case-studies">
-                <Button variant="outline">View All Case Studies</Button>
+                <Button as="span" variant="outline">View All Case Studies</Button>
               </Link>
             </motion.div>
           </div>

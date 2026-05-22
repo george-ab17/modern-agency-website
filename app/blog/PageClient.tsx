@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionContainer } from '@/components/SectionContainer';
-import { BlogCard } from '@/components/BlogCard';
-import { CTABanner } from '@/components/CTABanner';
+import { SectionContainer } from '@/components';
+import { BlogCard } from '@/components';
+import { CTABanner } from '@/components';
 import { FEATURED_POST, BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/data/blog';
 
 

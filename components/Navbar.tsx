@@ -98,7 +98,7 @@ export const Navbar: React.FC = () => {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Link href={NAV_CTA.href}>
-                <Button size="sm">
+                <Button as="span" size="sm">
                   {NAV_CTA.label}
                 </Button>
               </Link>
@@ -167,7 +167,7 @@ export const Navbar: React.FC = () => {
                 )
               )}
               <Link href={NAV_CTA.href} className="block">
-                <Button className="w-full" size="md">
+                <Button as="span" className="w-full" size="md">
                   {NAV_CTA.label}
                 </Button>
               </Link>

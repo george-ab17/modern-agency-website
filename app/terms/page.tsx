@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SectionContainer } from '@/components/SectionContainer';
+import { SectionContainer } from '@/components';
 import { BRAND } from '@/lib/constants/brand';
 import { pageMetadata } from '@/lib/seo';
 

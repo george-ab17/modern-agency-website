@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/Button';
-import { JsonLd } from '@/components/JsonLd';
-import { SectionContainer } from '@/components/SectionContainer';
+import { Button } from '@/components';
+import { JsonLd } from '@/components';
+import { SectionContainer } from '@/components';
 import { BLOG_POSTS, FEATURED_POST } from '@/lib/data/blog';
-import { FEATURED_POST_CONTENT } from '@/lib/data/blogPost';
+import { FULL_BLOG_POST_CONTENT } from '@/lib/data/blogPost';
 import { articleSchema, breadcrumbSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
 
@@ -28,6 +28,11 @@ const blogPosts = [
     contentType: 'standard',
   })),
 ] as const;
+
+const fullPostContentBySlug: Record<
+  string,
+  (typeof FULL_BLOG_POST_CONTENT)[keyof typeof FULL_BLOG_POST_CONTENT]
+> = FULL_BLOG_POST_CONTENT;
 
 function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
@@ -67,8 +72,19 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const path = `/blog/${post.slug}`;
-  const isFeaturedPost = post.slug === FEATURED_POST_CONTENT.slug;
-  const relatedPosts = BLOG_POSTS.filter((relatedPost) => relatedPost.id !== post.slug).slice(0, 3);
+  const fullPostContent = fullPostContentBySlug[post.slug];
+  const allRelatedPosts = blogPosts.filter((relatedPost) => relatedPost.slug !== post.slug);
+  const relatedPosts = fullPostContent?.relatedPosts
+    ? fullPostContent.relatedPosts
+        .map((relatedSlugOrTitle) =>
+          allRelatedPosts.find(
+            (relatedPost) =>
+              relatedPost.slug === relatedSlugOrTitle || relatedPost.title === relatedSlugOrTitle
+          )
+        )
+        .filter((relatedPost): relatedPost is (typeof allRelatedPosts)[number] => Boolean(relatedPost))
+        .slice(0, 3)
+    : allRelatedPosts.slice(0, 3);
 
   return (
     <>
@@ -101,16 +117,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       <SectionContainer padding="2xl">
         <article className="max-w-4xl mx-auto">
-          {isFeaturedPost ? (
+          {fullPostContent ? (
             <>
               <div className="space-y-5 text-lg text-neutral-600 leading-relaxed mb-12">
-                {FEATURED_POST_CONTENT.introduction.map((paragraph) => (
+                {fullPostContent.introduction.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
 
               <div className="space-y-12">
-                {FEATURED_POST_CONTENT.sections.map((section) => (
+                {fullPostContent.sections.map((section) => (
                   <section key={section.title}>
                     <h2 className="text-3xl font-bold text-neutral-900 mb-5">{section.title}</h2>
                     {'body' in section && section.body ? (
@@ -132,13 +148,20 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                         ))}
                       </div>
                     ) : null}
+                    {'bodyAfter' in section && section.bodyAfter ? (
+                      <div className="space-y-4 text-neutral-600 leading-relaxed mt-5">
+                        {section.bodyAfter.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                      </div>
+                    ) : null}
                   </section>
                 ))}
               </div>
 
               <div className="mt-12 border-t border-neutral-200 pt-8">
                 <p className="text-lg text-neutral-600 leading-relaxed">
-                  {FEATURED_POST_CONTENT.conclusion}
+                  {fullPostContent.conclusion}
                 </p>
               </div>
             </>
@@ -189,13 +212,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             Ready to Automate?
           </h2>
           <p className="text-lg text-neutral-600 mb-8">
-            {isFeaturedPost
-              ? FEATURED_POST_CONTENT.cta
+            {fullPostContent
+              ? fullPostContent.cta
               : 'Ready to turn this strategy into execution? Book a free consultation and we will help you identify the highest-impact next step.'}
           </p>
           <Link href="/contact">
-            <Button size="lg">
-              {isFeaturedPost ? FEATURED_POST_CONTENT.ctaButton : 'Book a Free Consultation'}
+            <Button as="span" size="lg">
+              {fullPostContent ? fullPostContent.ctaButton : 'Book a Free Consultation'}
               <ArrowRight size={20} />
             </Button>
           </Link>
@@ -208,8 +231,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {relatedPosts.map((relatedPost) => (
               <Link
-                key={relatedPost.id}
-                href={`/blog/${relatedPost.id}`}
+                key={relatedPost.slug}
+                href={`/blog/${relatedPost.slug}`}
                 className="bg-white rounded-xl p-6 border border-neutral-200 hover:border-brand-300 transition-smooth"
               >
                 <p className="font-semibold text-neutral-900">{relatedPost.title}</p>

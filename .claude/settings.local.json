@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem d:\\\\UI_things -Exclude node_modules,.next | ForEach-Object { if \\($_.PSIsContainer\\) { Get-ChildItem $_.FullName -Recurse -Exclude node_modules | Select-Object FullName } else { $_ | Select-Object FullName } })",
+      "PowerShell(Get-ChildItem d:\\\\UI_things -Directory | Where-Object { $_.Name -notin @\\('node_modules', '.next', '.git'\\) } | Select-Object Name)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3001)",
+      "Bash(npx next *)",
+      "Bash(Get-ChildItem \"d:\\\\UI_things\\\\app\\\\ai-automation-services\\\\\" -Recurse | Select-Object FullName)",
+      "Bash(node -e \"require\\('./lib/data/servicePages'\\)\")",
+      "Bash(netstat -ano)",
+      "Bash(tasklist /FI \"PID eq 15000\")",
+      "Bash(curl -s -m 5 http://localhost:3000)",
+      "Bash(curl -s -m 10 http://localhost:3002)",
+      "Bash(curl -s -m 5 http://localhost:3000/)",
+      "Bash(curl -s -m 15 -w \"\\\\nHTTP Status: %{http_code}\" http://localhost:3002/)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(curl -s -m 30 -w \"\\\\nHTTP: %{http_code}\\\\n\" http://localhost:3003/)",
+      "Bash(curl -s -m 30 -w \"\\\\nHTTP: %{http_code}\\\\n\" http://127.0.0.1:3002/)",
+      "PowerShell($response = Invoke-WebRequest -Uri \"http://localhost:3002\" -TimeoutSec 30 -UseBasicParsing; $response.StatusCode; $response.Content.Substring\\(0, 200\\))",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3005\" -TimeoutSec 60 -UseBasicParsing; $r.StatusCode)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3005\" -TimeoutSec 120 -UseBasicParsing; $r.StatusCode)",
+      "PowerShell(Stop-Process -Id 15000, 22252, 28088, 13036 -Force -ErrorAction SilentlyContinue)",
+      "Bash(curl -s -m 30 -w \"\\\\nHTTP: %{http_code}\\\\n\" http://localhost:3000/)"
+    ]
+  }
+}

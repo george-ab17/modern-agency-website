@@ -67,6 +67,7 @@ export const CTABanner: React.FC<CTABannerProps> = ({
           {primaryHref ? (
             <Link href={primaryHref}>
               <Button
+                as="span"
                 variant={isDark ? 'secondary' : 'primary'}
                 size="lg"
                 className="min-w-fit"
@@ -89,6 +90,7 @@ export const CTABanner: React.FC<CTABannerProps> = ({
           {secondaryButtonText && secondaryHref ? (
             <Link href={secondaryHref}>
               <Button
+                as="span"
                 variant={isDark ? 'outline' : 'ghost'}
                 size="lg"
                 className={`min-w-fit ${

@@ -7,6 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   isLoading?: boolean;
+  as?: 'button' | 'span';
   children: React.ReactNode;
 }
 
@@ -34,24 +35,37 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       isLoading = false,
       disabled = false,
+      as = 'button',
       className = '',
       children,
       ...props
     },
     ref
   ) => {
+    const classes = `
+      inline-flex items-center justify-center gap-2
+      font-medium transition-smooth cursor-pointer
+      hover:-translate-y-0.5 active:translate-y-0
+      focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2
+      disabled:opacity-50 disabled:cursor-not-allowed
+      ${variantStyles[variant]}
+      ${sizeStyles[size]}
+      ${className}
+    `;
+
+    if (as === 'span') {
+      return (
+        <span className={classes}>
+          {children}
+        </span>
+      );
+    }
+
     return (
       <button
         ref={ref}
         disabled={isLoading || disabled}
-        className={`
-          inline-flex items-center justify-center gap-2
-          font-medium transition-smooth
-          disabled:opacity-50 disabled:cursor-not-allowed
-          ${variantStyles[variant]}
-          ${sizeStyles[size]}
-          ${className}
-        `}
+        className={classes}
         {...props}
       >
         {isLoading && (

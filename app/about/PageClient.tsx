@@ -3,8 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Target, Lightbulb, Award, ArrowRight } from 'lucide-react';
-import { SectionContainer } from '@/components/SectionContainer';
-import { Button } from '@/components/Button';
+import { SectionContainer } from '@/components';
+import { Button } from '@/components';
 import Link from 'next/link';
 
 
@@ -355,7 +355,7 @@ export default function About() {
           </motion.p>
           <motion.div variants={itemVariants}>
             <Link href="/contact">
-              <Button variant="secondary" size="lg">
+              <Button as="span" variant="secondary" size="lg">
                 Get In Touch
                 <ArrowRight size={20} />
               </Button>

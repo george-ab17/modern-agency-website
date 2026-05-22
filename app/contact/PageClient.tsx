@@ -10,10 +10,13 @@ import {
   Clock,
   Send,
   CheckCircle2,
+  ChevronDown,
+  ArrowRight,
 } from 'lucide-react';
-import { SectionContainer } from '@/components/SectionContainer';
-import { Button } from '@/components/Button';
+import { SectionContainer } from '@/components';
+import { Button } from '@/components';
 import { BRAND } from '@/lib/constants/brand';
+import { PROJECT_FAQS } from '@/lib/data/faqs';
 
 
 const containerVariants = {
@@ -37,6 +40,7 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -61,7 +65,24 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would send to a backend
+
+    const subject = encodeURIComponent(`New project enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Company: ${formData.company || 'Not provided'}`,
+        `Phone: ${formData.phone || 'Not provided'}`,
+        `Region: ${formData.region || 'Not selected'}`,
+        `Service: ${formData.service || 'Not selected'}`,
+        `Budget: ${formData.budget || 'Not selected'}`,
+        '',
+        'Message:',
+        formData.message,
+      ].join('\n')
+    );
+
+    window.location.href = `mailto:${BRAND.email}?subject=${subject}&body=${body}`;
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
@@ -101,12 +122,29 @@ export default function Contact() {
             >
               Whether you're ready to start or just exploring your options  we'd love to hear from you. Book a free strategy consultation and let's talk about what's possible for your business.
             </motion.p>
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <a href="#contact-form" className="inline-flex">
+                <Button as="span" size="lg" className="min-w-fit">
+                  Start Your Enquiry
+                  <ArrowRight size={20} />
+                </Button>
+              </a>
+              <a href="#contact-faqs" className="inline-flex">
+                <Button as="span" variant="outline" size="lg" className="min-w-fit">
+                  View FAQs
+                  <ChevronDown size={20} />
+                </Button>
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <SectionContainer padding="2xl">
+      <SectionContainer id="contact-form" padding="2xl">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -379,6 +417,58 @@ export default function Contact() {
         </motion.div>
       </SectionContainer>
 
+      {/* Project FAQs */}
+      <SectionContainer id="contact-faqs" padding="2xl">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={containerVariants}
+        >
+          <div className="text-center mb-12">
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-neutral-600 max-w-2xl mx-auto"
+            >
+              Common questions from clients before starting a project.
+            </motion.p>
+          </div>
+
+          <motion.div variants={containerVariants} className="max-w-3xl mx-auto space-y-3">
+            {PROJECT_FAQS.map((faq, i) => (
+              <motion.div key={i} variants={itemVariants}>
+                <div className="bg-white rounded-xl border border-neutral-200 overflow-hidden hover:border-brand-300 transition-smooth">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                    aria-expanded={openFaq === i}
+                  >
+                    <span className="font-semibold text-neutral-900">{faq.question}</span>
+                    <ChevronDown
+                      size={20}
+                      className={`text-brand-600 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-6 pb-5">
+                      <p className="text-neutral-600 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </SectionContainer>
+
       {/* Consultation Booking CTA */}
       <SectionContainer padding="2xl" className="bg-neutral-50">
         <motion.div
@@ -404,13 +494,14 @@ export default function Contact() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link href="/contact">
-              <Button size="lg" className="min-w-fit">
+            <a href="#contact-form">
+              <Button as="span" size="lg" className="min-w-fit">
                 Schedule Your Call
               </Button>
-            </Link>
+            </a>
             <Link href="/services">
               <Button
+                as="span"
                 variant="outline"
                 size="lg"
                 className="min-w-fit"

@@ -9,7 +9,7 @@ export const NAV_LINKS = [
 
 export const NAV_CTA = {
   label: "Book a Free Call",
-  href: "/contact",
+  href: "/contact#contact-form",
 } as const;
 
 export const FOOTER = {

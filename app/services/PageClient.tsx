@@ -12,8 +12,8 @@ import {
   BarChart3,
   Sparkles,
 } from 'lucide-react';
-import { SectionContainer } from '@/components/SectionContainer';
-import { CTABanner } from '@/components/CTABanner';
+import { SectionContainer } from '@/components';
+import { CTABanner } from '@/components';
 import { SERVICES_FAQS } from '@/lib/data/faqs';
 import { SERVICES } from '@/lib/data/services';
 
