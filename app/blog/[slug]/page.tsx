@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components';
 import { JsonLd } from '@/components';
@@ -9,6 +10,15 @@ import { BLOG_POSTS, FEATURED_POST } from '@/lib/data/blog';
 import { FULL_BLOG_POST_CONTENT } from '@/lib/data/blogPost';
 import { articleSchema, breadcrumbSchema } from '@/lib/schema';
 import { pageMetadata } from '@/lib/seo';
+
+const BLOG_POST_IMAGES: Record<string, string> = {
+  'vibe-coding-replacing-dev-teams': '/blog/vibe-coding.jpg',
+  'zero-click-searches-eating-your-traffic': '/blog/zero-click.png',
+  'agentic-ai-b2b-sales': '/blog/agentic-ai.png',
+  'authentic-brand-ai-content-flood': '/blog/authentic-brand.png',
+  'death-of-third-party-cookies': '/blog/third-party-cookies.png',
+  'whatsapp-marketing-high-converting-channel': '/blog/whatsapp-marketing.png',
+};
 
 type BlogPostPageProps = {
   params: {
@@ -114,6 +124,20 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
         </div>
       </section>
+
+      {BLOG_POST_IMAGES[post.slug] ? (
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-4">
+          <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden">
+            <Image
+              src={BLOG_POST_IMAGES[post.slug]}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      ) : null}
 
       <SectionContainer padding="2xl">
         <article className="max-w-4xl mx-auto">

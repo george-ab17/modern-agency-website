@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Clock, Newspaper, User } from 'lucide-react';
 
 interface BlogCardProps {
@@ -10,6 +11,7 @@ interface BlogCardProps {
   readTime: number;
   date: string;
   href: string;
+  image?: string;
   featured?: boolean;
   className?: string;
 }
@@ -22,6 +24,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   readTime,
   date,
   href,
+  image,
   featured = false,
   className = '',
 }) => {
@@ -43,10 +46,21 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         `}
       >
         <div className="w-full h-48 md:h-64 bg-gradient-to-br from-brand-100 to-brand-200 flex items-center justify-center overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-600/10 to-brand-700/20 group-hover:from-brand-600/20 group-hover:to-brand-700/30 transition-smooth" />
-          <div className="text-brand-300 text-center z-10" aria-hidden="true">
-            <Newspaper size={56} className="opacity-40" />
-          </div>
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover object-left group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-600/10 to-brand-700/20 group-hover:from-brand-600/20 group-hover:to-brand-700/30 transition-smooth" />
+              <div className="text-brand-300 text-center z-10" aria-hidden="true">
+                <Newspaper size={56} className="opacity-40" />
+              </div>
+            </>
+          )}
         </div>
 
         <div className="p-6 flex flex-col flex-1">

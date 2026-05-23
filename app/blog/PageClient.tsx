@@ -7,6 +7,15 @@ import { BlogCard } from '@/components';
 import { CTABanner } from '@/components';
 import { FEATURED_POST, BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/data/blog';
 
+const BLOG_POST_IMAGES: Record<string, string> = {
+  'vibe-coding-replacing-dev-teams': '/blog/vibe-coding.jpg',
+  'zero-click-searches-eating-your-traffic': '/blog/zero-click.png',
+  'agentic-ai-b2b-sales': '/blog/agentic-ai.png',
+  'authentic-brand-ai-content-flood': '/blog/authentic-brand.png',
+  'death-of-third-party-cookies': '/blog/third-party-cookies.png',
+  'whatsapp-marketing-high-converting-channel': '/blog/whatsapp-marketing.png',
+};
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,7 +39,10 @@ const itemVariants = {
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
-  const visiblePosts = [FEATURED_POST, ...BLOG_POSTS].filter(
+  const allPosts = [FEATURED_POST, ...BLOG_POSTS].filter(
+    (post) => BLOG_POST_IMAGES['slug' in post ? post.slug : post.id]
+  );
+  const visiblePosts = allPosts.filter(
     (post) => selectedCategory === 'All' || post.category === selectedCategory
   );
 
@@ -103,7 +115,7 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
             {visiblePosts.map((post, idx) => (
               <motion.div key={post.id || idx} variants={itemVariants}>
-                <BlogCard 
+                <BlogCard
                   title={post.title}
                   excerpt={post.excerpt || ''}
                   category={post.category}
@@ -111,6 +123,7 @@ export default function Blog() {
                   readTime={Number.parseInt(post.readTime, 10)}
                   date={post.date}
                   href={`/blog/${'slug' in post ? post.slug : post.id}`}
+                  image={BLOG_POST_IMAGES['slug' in post ? post.slug : post.id]}
                 />
               </motion.div>
             ))}

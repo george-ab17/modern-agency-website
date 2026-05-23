@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Globe } from 'lucide-react';
+import { Mail, Globe, Linkedin } from 'lucide-react';
 import { BRAND } from '@/lib/constants/brand';
 import { FOOTER } from '@/lib/constants/navigation';
 
@@ -23,7 +23,17 @@ export const Footer: React.FC = () => {
             </div>
             <p className="text-sm text-neutral-400 mb-3">{FOOTER.tagline}</p>
             <p className="text-sm text-neutral-500 mb-4">{FOOTER.description}</p>
-            <p className="text-xs text-neutral-500">{FOOTER.markets}</p>
+            <p className="text-xs text-neutral-500 mb-4">{FOOTER.markets}</p>
+            <a
+              href={FOOTER.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Kynosi on LinkedIn"
+              className="inline-flex items-center gap-2 text-neutral-400 hover:text-white transition-smooth text-sm"
+            >
+              <Linkedin size={18} aria-hidden="true" />
+              Follow us on LinkedIn
+            </a>
           </div>
 
           <div>

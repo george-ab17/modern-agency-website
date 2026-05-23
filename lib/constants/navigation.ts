@@ -4,6 +4,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -32,12 +33,16 @@ export const FOOTER = {
       { label: "About Us", href: "/about" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Blog", href: "/blog" },
+      { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
   },
   contact: {
     email: "hello@kynosi.com",
     website: "kynosi.com",
+  },
+  social: {
+    linkedin: "https://www.linkedin.com/company/kynosi/about/",
   },
   legal: {
     copyright: "(c) 2026 Kynosi. All rights reserved.",

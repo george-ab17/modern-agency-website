@@ -30,6 +30,15 @@ export const BLOG_POSTS = [
       "Rankings are holding, but organic traffic is falling. Learn why zero-click searches are changing SEO and how to rebuild a resilient traffic strategy.",
   },
   {
+    id: "whatsapp-marketing-high-converting-channel",
+    title: "WhatsApp Marketing: The High-Converting Channel Most Brands Are Ignoring",
+    category: "Ads Strategy",
+    readTime: "6 min read",
+    date: "May 2026",
+    excerpt:
+      "Open rates above 90%. Response rates 3x higher than email. WhatsApp marketing isn't a future opportunity — it's a present one that most brands are still walking past.",
+  },
+  {
     id: "google-ads-vs-meta-ads",
     title: "Google Ads vs Meta Ads: Which Is Right for Your Business?",
     category: "Ads Strategy",
@@ -48,6 +57,15 @@ export const BLOG_POSTS = [
       "Most businesses make the same critical SEO errors. Here are the 10 most damaging - and how to fix them fast.",
   },
   {
+    id: "death-of-third-party-cookies",
+    title: "The Death of Third-Party Cookies: What Every Marketer Must Do Before Q3",
+    category: "Digital Marketing",
+    readTime: "10 min read",
+    date: "May 2026",
+    excerpt:
+      "Third-party cookies are ending. First-party relationships are beginning. Here's your practical action plan before Q3 2026.",
+  },
+  {
     id: "kynosi-framework-conversion-optimisation",
     title: "The Kynosi Framework for Conversion Optimisation",
     category: "Digital Marketing",
@@ -57,6 +75,15 @@ export const BLOG_POSTS = [
       "A systematic approach to turning more of your existing traffic into leads, sales, and revenue - without spending more on ads.",
   },
   {
+    id: "authentic-brand-ai-content-flood",
+    title: "Building an Authentic Brand When AI Is Flooding the Internet With Content",
+    category: "Branding",
+    readTime: "8 min read",
+    date: "May 2026",
+    excerpt:
+      "AI industrialised mediocrity. Authentic branding has never been more valuable — precisely because it's become so rare. Here's how to build a brand worth trusting.",
+  },
+  {
     id: "brand-losing-business",
     title: "Why Your Brand Is Losing You Business (And How to Fix It)",
     category: "Branding",
@@ -64,6 +91,15 @@ export const BLOG_POSTS = [
     date: "March 2026",
     excerpt:
       "Weak branding costs more than most businesses realise. Here's what a premium brand identity actually does for your bottom line.",
+  },
+  {
+    id: "agentic-ai-b2b-sales",
+    title: "Agentic AI in B2B Sales: How to Let AI Close More Deals While You Sleep",
+    category: "AI & Automation",
+    readTime: "11 min read",
+    date: "May 2026",
+    excerpt:
+      "Agentic AI researches prospects, personalises outreach, follows up across channels, and hands off warm leads to your team — without being prompted at every step.",
   },
   {
     id: "ai-lead-generation-b2b-guide",
