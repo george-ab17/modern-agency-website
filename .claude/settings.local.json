@@ -21,7 +21,17 @@
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3005\" -TimeoutSec 60 -UseBasicParsing; $r.StatusCode)",
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3005\" -TimeoutSec 120 -UseBasicParsing; $r.StatusCode)",
       "PowerShell(Stop-Process -Id 15000, 22252, 28088, 13036 -Force -ErrorAction SilentlyContinue)",
-      "Bash(curl -s -m 30 -w \"\\\\nHTTP: %{http_code}\\\\n\" http://localhost:3000/)"
+      "Bash(curl -s -m 30 -w \"\\\\nHTTP: %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(Get-Process node *)",
+      "Bash(Stop-Process -Force)",
+      "Bash(Start-Sleep -Seconds 2)",
+      "Bash(Start-Process -NoNewWindow -FilePath \"npx\" -ArgumentList \"next\",\"dev\" -WorkingDirectory \"d:\\\\UI_things\")",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force)",
+      "Bash(cd /mnt/d/UI_things && npx next dev &)",
+      "Read(//mnt/d/**)",
+      "PowerShell(Start-Process -NoNewWindow -FilePath \"cmd.exe\" -ArgumentList \"/c\",\"cd /d d:\\\\UI_things && npx next dev\")",
+      "PowerShell(Start-Process -FilePath \"cmd.exe\" -ArgumentList \"/k cd /d d:\\\\UI_things && npx next dev\" -WindowStyle Normal)"
     ]
   }
 }

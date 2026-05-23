@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { SectionContainer } from '@/components';
 import { BlogCard } from '@/components';
 import { CTABanner } from '@/components';
-import { FEATURED_POST, BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/data/blog';
+import { BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/data/blog';
 
 const BLOG_POST_IMAGES: Record<string, string> = {
   'vibe-coding-replacing-dev-teams': '/blog/vibe-coding.jpg',
@@ -39,10 +39,7 @@ const itemVariants = {
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = React.useState('All');
-  const allPosts = [FEATURED_POST, ...BLOG_POSTS].filter(
-    (post) => BLOG_POST_IMAGES['slug' in post ? post.slug : post.id]
-  );
-  const visiblePosts = allPosts.filter(
+  const visiblePosts = BLOG_POSTS.filter(
     (post) => selectedCategory === 'All' || post.category === selectedCategory
   );
 
@@ -108,13 +105,12 @@ export default function Blog() {
       <SectionContainer padding="2xl">
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          animate="visible"
           variants={containerVariants}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
-            {visiblePosts.map((post, idx) => (
-              <motion.div key={post.id || idx} variants={itemVariants}>
+            {visiblePosts.map((post) => (
+              <motion.div key={post.id} variants={itemVariants}>
                 <BlogCard
                   title={post.title}
                   excerpt={post.excerpt || ''}
@@ -122,8 +118,8 @@ export default function Blog() {
                   author="Kynosi Team"
                   readTime={Number.parseInt(post.readTime, 10)}
                   date={post.date}
-                  href={`/blog/${'slug' in post ? post.slug : post.id}`}
-                  image={BLOG_POST_IMAGES['slug' in post ? post.slug : post.id]}
+                  href={`/blog/${post.id}`}
+                  image={BLOG_POST_IMAGES[post.id]}
                 />
               </motion.div>
             ))}

@@ -89,7 +89,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         .map((relatedSlugOrTitle) =>
           allRelatedPosts.find(
             (relatedPost) =>
-              relatedPost.slug === relatedSlugOrTitle || relatedPost.title === relatedSlugOrTitle
+              (relatedPost.slug as string) === (relatedSlugOrTitle as string) || (relatedPost.title as string) === (relatedSlugOrTitle as string)
           )
         )
         .filter((relatedPost): relatedPost is (typeof allRelatedPosts)[number] => Boolean(relatedPost))
