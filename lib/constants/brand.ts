@@ -1,7 +1,7 @@
 export const BRAND = {
   name: "Kynosi",
   tagline: "Digital Excellence & AI-Powered Growth",
-  email: "hello@kynosi.com",
+  email: "digital@kynosi.com",
   website: "kynosi.com",
   phone: "",
   whatsapp: "",

@@ -380,9 +380,9 @@ export default function AiAutomationServicesClient() {
             title="Transform Your Business with AI Automation"
             description="The future of business is automation-driven. Whether you want to automate marketing, sales, customer support, or internal workflows, our AI automation experts can help you build intelligent systems that save time and accelerate business growth."
             primaryButtonText="Get in Touch Today"
-            secondaryButtonText="View Our Work"
+            secondaryButtonText="Read Our Blog"
             primaryHref="/contact"
-            secondaryHref="/case-studies"
+            secondaryHref="/blog"
           />
         </motion.div>
       </SectionContainer>

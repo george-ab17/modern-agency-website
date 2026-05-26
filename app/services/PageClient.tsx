@@ -264,9 +264,9 @@ export default function Services() {
             title="Not Sure Where to Start?"
             description="Book a free 30-minute strategy consultation with our experts. We'll audit your current digital presence, identify your biggest growth opportunities, and recommend the exact services that will move the needle for your business  whether you're based in India, the UK, the Middle East, or anywhere across Asia."
             primaryButtonText="Book Your Free Strategy Call "
-            secondaryButtonText="Explore Case Studies"
+            secondaryButtonText="Read Our Blog"
             primaryHref="/contact"
-            secondaryHref="/case-studies"
+            secondaryHref="/blog"
           />
         </motion.div>
       </SectionContainer>

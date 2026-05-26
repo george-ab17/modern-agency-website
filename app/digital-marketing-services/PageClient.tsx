@@ -319,9 +319,9 @@ export default function DigitalMarketingServicesClient() {
             title="Let's Build Your Brand Online"
             description="Every business has unique goals, and your marketing strategy should reflect that. Whether you want to increase leads, improve brand awareness, or boost online sales, our digital marketing experts are ready to help you achieve sustainable growth with tailored digital solutions."
             primaryButtonText="Get Started Today"
-            secondaryButtonText="View Our Work"
+            secondaryButtonText="Read Our Blog"
             primaryHref="/contact"
-            secondaryHref="/case-studies"
+            secondaryHref="/blog"
           />
         </motion.div>
       </SectionContainer>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { JsonLd } from '@/components';
 import { Navbar } from '@/components';
 import { Footer } from '@/components';
@@ -6,6 +7,8 @@ import { BRAND, META } from '@/lib/constants/brand';
 import { organizationSchema, websiteSchema } from '@/lib/schema';
 import { pageMetadata, SITE_URL } from '@/lib/seo';
 import './globals.css';
+
+const GA_ID = 'G-2J0FXK7ZZ2';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,6 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-neutral-900">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <JsonLd data={[organizationSchema, websiteSchema]} />
         <a href="#main-content" className="skip-link">
           Skip to main content

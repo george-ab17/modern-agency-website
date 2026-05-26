@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { BLOG_POSTS, FEATURED_POST } from '@/lib/data/blog';
-import { CASE_STUDIES } from '@/lib/data/caseStudies';
 import { SERVICE_PAGES } from '@/lib/data/servicePages';
 import { STATIC_ROUTES, absoluteUrl } from '@/lib/seo';
 
@@ -23,13 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  const caseStudyRoutes = CASE_STUDIES.map((study) => ({
-    url: absoluteUrl(`/case-studies/${study.id}`),
-    lastModified,
-    changeFrequency: monthly,
-    priority: 0.7,
-  }));
-
   const blogRoutes = [FEATURED_POST, ...BLOG_POSTS].map((post) => ({
     url: absoluteUrl(`/blog/${'slug' in post ? post.slug : post.id}`),
     lastModified,
@@ -37,5 +29,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...caseStudyRoutes, ...blogRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }

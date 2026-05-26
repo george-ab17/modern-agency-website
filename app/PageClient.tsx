@@ -19,12 +19,10 @@ import { Button } from '@/components';
 import { SectionContainer } from '@/components';
 import { ServiceCard } from '@/components';
 import { TestimonialCard } from '@/components';
-import { CaseStudyCard } from '@/components';
 import { CTABanner } from '@/components';
 import Link from 'next/link';
 import { STATS } from '@/lib/constants/brand';
 import { SERVICES } from '@/lib/data/services';
-import { CASE_STUDIES } from '@/lib/data/caseStudies';
 
 const serviceIcons = {
   TrendingUp,
@@ -101,9 +99,9 @@ export default function Home() {
                   <ArrowRight size={20} />
                 </Button>
               </Link>
-              <Link href="/case-studies">
+              <Link href="/services">
                 <Button as="span" variant="outline" size="lg">
-                  View Our Work
+                  View Our Services
                 </Button>
               </Link>
             </motion.div>
@@ -278,57 +276,6 @@ export default function Home() {
                   <h3 className="text-xl font-bold mb-2">{step.title}</h3>
                   <p className="text-neutral-400 text-sm">{step.description}</p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
-      </SectionContainer>
-
-      {/* Featured Case Studies Section */}
-      <SectionContainer padding="2xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={containerVariants}
-        >
-          <div className="text-center mb-16">
-            <motion.h2
-              variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4"
-            >
-              Proof That Bold Strategy Delivers Extraordinary Results
-            </motion.h2>
-            <motion.p
-              variants={itemVariants}
-              className="text-xl text-neutral-600 max-w-2xl mx-auto mb-8"
-            >
-              We let our work speak for itself. Every case study below represents a real business, a real challenge, and a real transformation  delivered by the Kynosi team.
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <Link href="/case-studies">
-                <Button as="span" variant="outline">View All Case Studies</Button>
-              </Link>
-            </motion.div>
-          </div>
-
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {CASE_STUDIES.slice(0, 2).map((study) => (
-              <motion.div key={study.id} variants={itemVariants}>
-                <CaseStudyCard
-                  title={study.challenge.slice(0, 60)}
-                  company={study.client}
-                  metrics={study.results.slice(0, 2).map((result) => ({
-                    label: result.metric,
-                    value: result.value,
-                  }))}
-                  description={study.approach.slice(0, 80)}
-                  tags={study.tags.slice(0, 2)}
-                  href={`/case-studies/${study.id}`}
-                />
               </motion.div>
             ))}
           </motion.div>

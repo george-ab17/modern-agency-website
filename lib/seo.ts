@@ -21,11 +21,6 @@ export const STATIC_ROUTES = [
   { path: '/', title: META.home.title, description: META.home.description },
   { path: '/about', title: META.about.title, description: META.about.description },
   { path: '/services', title: META.services.title, description: META.services.description },
-  {
-    path: '/case-studies',
-    title: META.caseStudies.title,
-    description: META.caseStudies.description,
-  },
   { path: '/blog', title: META.blog.title, description: META.blog.description },
   { path: '/contact', title: META.contact.title, description: META.contact.description },
   {
